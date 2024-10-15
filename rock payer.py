@@ -19,13 +19,17 @@ while True:
             hortin = 2
     hortlist.append(hortin)
     current = []
+    print('the bot guessed',inputs[guess+3])
     if hortin == guess:
-        print('the bot was correct')
-        correctlist.append(1)
-    else:
-        print('the bot was incorrect')
+        print('the bot won')
         correctlist.append(0)
-    print('the bot has been right',math.ceil(100*sum(correctlist)/len(correctlist)),'percent of the time')
+    elif guess == (hortin + 1)%3:
+        print('the bot drew')
+        correctlist.append(0)
+    else:
+        print('the bot lost')
+        correctlist.append(1)
+    print('the bot has been wrong',math.ceil(100*sum(correctlist)/len(correctlist)),'percent of the time')
     for i in range(len(hortlist)):
 
         current = hortlist[-lengthcheck:]
@@ -54,25 +58,18 @@ while True:
         #else:
            #guess = 0
     if not len(hortthought) == 0:
-        rock = hortthought.count(0)+hortthought.count(2)
-        paper = hortthought.count(1)+hortthought.count(0)
-        scissors = hortthought.count(2)+hortthought.count(1)
-        rocks = hortthought.count(0)
-        papers = hortthought.count(1)
-        scissorss = hortthought.count(2)
-        if rock > paper and rock > scissors:
+        rock = hortthought.count(0)
+        paper = hortthought.count(1)
+        scissors = hortthought.count(2)
+        if rock >= paper and rock >= scissors:
             guess = 0
-        elif paper > scissors and paper > rock:
+            #print('rock')
+        elif paper >= scissors:
             guess = 1
-        elif scissors > rock and scissors > paper:
-            guess = 2
+            #print('paper')
         else:
-            if rocks >= papers and rocks >= scissorss:
-                guess = 0
-            if papers >= scissorss:
-                guess = 1
-            else:
-                guess = 2
+            guess = 2
+            #print('scissors')
             
     #dev
     #if guess == 0:

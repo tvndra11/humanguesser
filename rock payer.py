@@ -1,3 +1,4 @@
+
 import math
 guess = 1
 i = 0
@@ -7,6 +8,7 @@ lengthcheck = 1
 correctlist = []
 hortinun = []
 inputs = ['r','p','s','rock','paper','scissors']
+rps = ['rock','paper','scissors']
 while True:
     hortinun = []
     while hortinun not in inputs:
@@ -19,11 +21,11 @@ while True:
             hortin = 2
     hortlist.append(hortin)
     current = []
-    print('the bot guessed',inputs[guess+3])
+    print('the bot guessed',rps[(guess + 1)%3])
     if hortin == guess:
         print('the bot won')
         correctlist.append(0)
-    elif guess == (hortin + 1)%3:
+    elif guess == (hortin - 1)%3:
         print('the bot drew')
         correctlist.append(0)
     else:
@@ -56,6 +58,8 @@ while True:
         #if rawguess > 0.5:
             #guess = 1
         #else:
+        
+
            #guess = 0
     if not len(hortthought) == 0:
         rock = hortthought.count(0)
